@@ -1,0 +1,12 @@
+*.DS_Store
+*.aux
+*.log
+*.blg 
+*.toc 
+*.bbl
+*.swp
+*.out
+*.nav
+*.snm
+*.lot
+*.lof
