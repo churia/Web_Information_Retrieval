@@ -1,6 +1,6 @@
 The weighted PageRank compute the importance of each page as follows:
 
-I(Q) = (1-f)*H(Q) + f*Σ_{P->Q} I(P) * W(P,Q)  
+I(Q) = (1-f) * H(Q) + f * Σ_{P->Q} I(P) * W(P,Q)  
 
 where H(Q) is the inherent quality of Q, here we use log_2(#words in Q),
 W(P,Q) is the weight of link (P,Q). Score 1 for a link from P to Q.
@@ -16,6 +16,6 @@ set W(P,Q) = 1/#total pages for all Q
 Therefore, the weight matrix would be a dence one.
 
 command:
-python weightedPR.py dir-path paramter
+python weightedPR.py dir-path parameter-f
 eg:
 python weightedPR.py Example 0.7
