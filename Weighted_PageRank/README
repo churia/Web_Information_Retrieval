@@ -1,0 +1,12 @@
+The weighted PageRank compute the importance of each page as follows:
+
+I(Q) = (1-f)*H(Q) + f*Σ_{P->Q} I(P) * W(P,Q)  
+
+where H(Q) is the inherent quality of Q, here we use log_2(#words in Q),
+W(P,Q) is the weight of link (P,Q). Score 1 for a link from P to Q.
+If the link is in a special scope like < H1 >, < em > or < b > tag, add 1. 
+If there is more than one link from P to Q, add up all the scores for the links to get the total score. 
+
+Also, we normalize 
+H(Q) = H(Q)/total length of all pages,
+W(P,Q) = W(P,Q)/total weight of all out-links of P
