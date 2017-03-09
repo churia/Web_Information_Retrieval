@@ -1,0 +1,20 @@
+1. Intro
+
+This is to compute PageRank using Power Iteration
+The formula to compute PageRank of node i is like
+P_0(i) = 1P_k(i) = 1-d + d\sum_{(j,i)\in E} \frac{P_{k-1}(j)}{O_j}
+where 
+E is the set of edges, O_j is the number of out-links of node j
+and d is the damping factor.
+
+Until
+||P_k-P_{k-1}|| < \epsilon (Euclidean distance)
+
+2. Execution
+python3 PR.py [-d damping-factor] [-e epsilong] [-i maxIter] [-o output-file] input-file
+
+3. Evaluation
+Note that the PageRank computed by this method is not normalized, which means the value could be greater than 1.
+Given a standard result, we can evaluate our result by comparing the two file using
+1.L1 norm
+2.Spearman’s rho

@@ -1,0 +1,5 @@
+This is an EXAMPLE for generating features using graph information.
+For instance, if the edges represent the connection between persons
+in the social network, then the features of edges could be like the 
+number of common neighbors(friends), shortest path length, etc.
+

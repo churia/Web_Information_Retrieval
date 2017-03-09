@@ -1,0 +1,83 @@
+1. Intro
+
+This is a small information retrieval system which 
+implemented by Vector Space Model (VSM) with Rocchio 
+Relevance Feedback (pseudo version).
+
+Given a bunch of Chinese news articles and several 
+queries in NTCIR* format, the system is to find the 
+relevant documents among these articles according to 
+the queries.
+
+*NTCIR:
+*http://research.nii.ac.jp/ntcir/index-en.html
+*but the data sets are not public
+*here is an example of the document format
+*http://www.csie.ntu.edu.tw/~r02922008/WM2015/example
+
+To run this system, despite the corpus, the following 
+indexing models of the documents are needed:
+-vocab.all
+-file-list
+-Inverted-index
+
+2. Execution
+python3 main.py [-r] -i query-file -o ranked-list -m model-dir -d document-dir
+
+Options:
+-r: If specified, turn on the relevance feedback
+-i: set input file: query-file
+-o: set output file: ranked-list
+-m: set directory for the above three models
+-d: set document directory
+
+3. Implement 
+The system will build a VSM first based on the documents, 
+and then process the given queries using the same feature 
+space. At last, the system will output a ranking list of 
+documents which are the most relevant to the queries.
+
+So the input: queries in xml NTCIR format
+   the output: a list of document ids 
+
+For each query, output at most 100 documents. If "-r" is on, 
+the Rocchio Relevance Feedback (pseudo version) will be applied, 
+which means the top 20 documents of the result will be treated 
+as relevant document feedback.
+
+An evaluation (Mean Average Precision) is conducted in the 
+experiments. See the Report.pdf for details.
+
+4. File Architechture:
+-main.py: 
+the main executing file
+
+-bigram/unigram.py:
+extracts bigram/unigram terms from the corpus
+
+-tf_idf.py: 
+compute the TF-IDF for each term 
+
+-vectorize.py:
+build VSM based for the term space using one of the following 
+measurement1:
+
+method1: TF*IDF;
+method2: normalize TF with maxFreq;
+method3: normalize TF with Okapi/BM25, (b);
+method4: normalize TF with Okapi/BM25, (k,b);
+
+-parse_query.py
+parse the query files using the same vectorization method
+
+-rank.py
+compute the similarity using cosine distance and output
+the ranking list
+
+-stopword: 
+additional file containing stop-words
+
+-Report.pdf
+
+
+
