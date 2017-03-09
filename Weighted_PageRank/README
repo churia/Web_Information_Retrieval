@@ -10,7 +10,10 @@ If there is more than one link from P to Q, add up all the scores for the links 
 Also, we normalize 
 H(Q) = H(Q)/total length of all pages,
 W(P,Q) = W(P,Q)/total weight of all out-links of P
+if there is no out-links of P
+set W(P,Q) = 1/#total pages for all Q
 
+Therefore, the weight matrix would be a dence one.
 
 command:
 python weightedPR.py dir-path paramter
